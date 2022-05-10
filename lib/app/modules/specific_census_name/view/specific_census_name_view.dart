@@ -94,6 +94,7 @@ class _SpecificCensusNameViewState extends State<SpecificCensusNameView> {
                                       itemBuilder: (_, index) {
                                         final period = specificName.periods[index];
                                         return ListTile(
+                                          key: const ValueKey('SpecificCensusNameListTile'),
                                           title: Text('Período: ${period.period}'),
                                           trailing: Text('Frequência: ${period.frequency}'),
                                         );

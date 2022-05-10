@@ -58,6 +58,7 @@ class _CensusNamesViewState extends State<CensusNamesView> {
                           final censusName = snapshot.requireData[index];
                           return Card(
                             child: ListTile(
+                              key: const ValueKey('CensusNameListTile'),
                               onTap: () {
                                 Modular.to.pushNamed(
                                   RoutesDefinitionUtils.specificCensusName,

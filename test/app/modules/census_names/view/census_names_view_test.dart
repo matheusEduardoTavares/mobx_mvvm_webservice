@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_test_recrutamento/app/modules/census_names/models/census_names_model.dart';
 import 'package:flutter_test_recrutamento/app/modules/census_names/repository/census_names_repository.dart';
+import 'package:flutter_test_recrutamento/app/modules/census_names/view/census_names_view.dart';
 import 'package:flutter_test_recrutamento/app/modules/census_names/viewmodel/census_names_viewmodel.dart';
 import 'package:flutter_test_recrutamento/app/modules/census_names/viewmodel/census_names_viewmodel_impl.dart';
 import 'package:mocktail/mocktail.dart';
@@ -19,26 +21,24 @@ void main() {
     );
   });
 
-  test('Should initialize with empty list', () async {
-    //Assert
-    expect(viewmodel.censusNames.value, isEmpty);
-  });
-
-  test('Should execute getCensusNames correctly', () async {
-    //Arrange
+  testWidgets('Should render two ListTile', (tester) async {
     when(() => repository.getData()).
       thenAnswer((invocation) async => Future.value(
         FixtureReader.getData<List>('/core/mocks/census_name_mock.json')
           .map((e) => CensusNamesModel.fromMap(e)).toList()
       ));
+      
+    await tester.pumpWidget(
+      MaterialApp(
+        home: CensusNamesView(
+          viewmodel: viewmodel,
+        ),
+      ),
+    );
 
-    //Act
-    await viewmodel.getCensusNames();
+    await tester.pump();
 
-    //Assert
-    expect(viewmodel.censusNames.value, isNotEmpty);
-    expect(viewmodel.censusNames.value!.length, 2);
-    expect(viewmodel.censusNames.value![0].name, 'Maria');
-    expect(viewmodel.censusNames.value![1].name, 'João');
+    final widget = find.byKey(const ValueKey('CensusNameListTile'));
+    expect(widget, findsNWidgets(2));
   });
 }

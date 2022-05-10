@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_test_recrutamento/app/modules/specific_census_name/models/specific_census_name_model.dart';
 import 'package:flutter_test_recrutamento/app/modules/specific_census_name/repository/specific_census_name_repository.dart';
+import 'package:flutter_test_recrutamento/app/modules/specific_census_name/view/specific_census_name_view.dart';
 import 'package:flutter_test_recrutamento/app/modules/specific_census_name/viewmodel/specific_census_name_viewmodel.dart';
 import 'package:flutter_test_recrutamento/app/modules/specific_census_name/viewmodel/specific_census_name_viewmodel_impl.dart';
 import 'package:mocktail/mocktail.dart';
@@ -19,29 +21,34 @@ void main() {
     );
   });
 
-  test('Should initialize with null model', () async {
-    //Assert
-    expect(viewmodel.specificCensusName.value, isNull);
-  });
-
-  test('Should execute getSpecificCensusName correctly', () async {
+  testWidgets('Should render all information about specific census name correctly', (tester) async {
     const name = 'Maria';
-
-    //Arrange
     when(() => repository.getSpecificName(name)).
       thenAnswer((invocation) async => Future.value(
         SpecificCensusNameModel.fromMap(FixtureReader.getData<Map<String, dynamic>>('/core/mocks/specific_census_name_mock.json'))
       ));
+      
+    await tester.pumpWidget(
+      MaterialApp(
+        home: SpecificCensusNameView(
+          viewmodel: viewmodel,
+          specificCensusName: name,
+        ),
+      ),
+    );
 
-    //Act
-    await viewmodel.getSpecificCensusName(name);
+    await tester.pump();
 
-    final specificName = viewmodel.specificCensusName.value!;
+    final nameInfoWidget = find.text(name);
+    expect(nameInfoWidget, findsOneWidget);
 
-    //Assert
-    expect(specificName.name, name);
-    expect(specificName.location, 'BR');
-    expect(specificName.sex, 'F');
-    expect(specificName.periods.length, 2);
+    final sexInfoWidget = find.text('F');
+    expect(sexInfoWidget, findsOneWidget);
+
+    final locationInfoWidget = find.text('BR');
+    expect(locationInfoWidget, findsOneWidget);
+
+    final periodsListTile = find.byKey(const ValueKey('SpecificCensusNameListTile'));
+    expect(periodsListTile, findsNWidgets(2));
   });
 }

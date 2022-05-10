@@ -17,7 +17,7 @@
 
 ## 📃 Sobre
 
-Este projeto foi desenvolvido para um teste, em que era preciso montar uma listagem de elementos consumindo o seguinte endpoint: `https://servicodados.ibge.gov.br/api/v2/censos/nomes/`, além de ser necessário montar uma tela de detalhes do elemento ao clicar no mesmo (na listagem).
+Este projeto foi desenvolvido para um teste, em que era preciso montar uma listagem de elementos consumindo o seguinte endpoint: `https://servicodados.ibge.gov.br/api/v2/censos/nomes/`, além de ser necessário montar uma tela de detalhes do elemento ao clicar no mesmo (na listagem). Neste projeto foram adicionados também testes unitários e testes de Widgets.
 <br />
 O projeto foi feito com MobX (usando codegen), sendo um MVVM com repository.
 
