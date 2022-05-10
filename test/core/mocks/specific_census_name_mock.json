@@ -1,0 +1,15 @@
+{
+	"nome": "Maria",
+	"sexo": "F",
+	"localidade": "BR",
+	"res": [
+	    {
+			"periodo": "1930[",
+			"frequencia": 336477
+	    },
+	    {
+			"periodo": "[1930,1940[",
+			"frequencia": 749053
+	    }
+	]
+}

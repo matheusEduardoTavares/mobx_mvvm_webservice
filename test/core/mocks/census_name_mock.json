@@ -1,0 +1,16 @@
+[
+	{
+		"nome": "Maria",
+		"regiao": 1,
+		"frequencia": 12120202,
+		"rank": 1,
+		"sexo": "F"
+	},
+	{
+		"nome": "João",
+		"regiao": 2,
+		"frequencia": 10101282,
+		"rank": 2,
+		"sexo": "M"
+	}
+]
