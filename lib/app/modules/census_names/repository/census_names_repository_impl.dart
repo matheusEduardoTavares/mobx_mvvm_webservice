@@ -1,5 +1,5 @@
 import 'package:flutter_test_recrutamento/app/core/rest_client/rest_client.dart';
-import 'package:flutter_test_recrutamento/app/core/utils/endpoints.dart';
+import 'package:flutter_test_recrutamento/app/core/utils/endpoints_utils.dart';
 import 'package:flutter_test_recrutamento/app/modules/census_names/models/census_names_model.dart';
 import 'package:flutter_test_recrutamento/app/modules/census_names/repository/census_names_repository.dart';
 
@@ -13,7 +13,7 @@ class CensusNamesRepositoryImpl implements CensusNamesRepository {
   @override
   Future<List<CensusNamesModel>> getData() async {
     final response = await _restClient.get(
-      Endpoints.getAll,
+      EndpointsUtils.getAll,
     );
 
     final responseData = List<Map<String, dynamic>>.from(response.data);

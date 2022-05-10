@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_test_recrutamento/app/core/models/census_period_model.dart';
+import 'package:flutter_test_recrutamento/app/modules/specific_census_name/models/census_period_model.dart';
 
 class SpecificCensusNameModel {
   const SpecificCensusNameModel({

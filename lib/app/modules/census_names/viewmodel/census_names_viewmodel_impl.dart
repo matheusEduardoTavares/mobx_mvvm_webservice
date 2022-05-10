@@ -20,7 +20,7 @@ abstract class _CensusNamesViewmodelImplBase with Store implements CensusNamesVi
 
   @override
   @action
-  Future<void> getGeneralPeople() async {
+  Future<void> getCensusNames() async {
     censusNames = ObservableFuture(_repository.getData());
   }
 }

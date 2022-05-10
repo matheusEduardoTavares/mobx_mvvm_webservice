@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_test_recrutamento/app/core/rest_client/dio_rest_client.dart';
 import 'package:flutter_test_recrutamento/app/core/rest_client/rest_client.dart';
-import 'package:flutter_test_recrutamento/app/modules/census_names/general_person_listing_module.dart';
+import 'package:flutter_test_recrutamento/app/modules/census_names/census_names_module.dart';
 
 class AppModule extends Module {
   @override

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_test_recrutamento/app/core/utils/routes_definition_utils.dart';
 import 'package:flutter_test_recrutamento/app/core/widgets/custom_error_widget/custom_error_widget.dart';
 import 'package:flutter_test_recrutamento/app/core/widgets/loading_widget/loading_widget.dart';
 import 'package:flutter_test_recrutamento/app/modules/census_names/models/census_names_model.dart';
@@ -24,7 +26,7 @@ class _CensusNamesViewState extends State<CensusNamesView> {
   void initState() {
     super.initState();
 
-    widget._viewmodel.getGeneralPeople();
+    widget._viewmodel.getCensusNames();
   }
 
   @override
@@ -53,6 +55,12 @@ class _CensusNamesViewState extends State<CensusNamesView> {
                         final censusName = snapshot.requireData[index];
                         return Card(
                           child: ListTile(
+                            onTap: () {
+                              Modular.to.pushNamed(
+                                RoutesDefinitionUtils.specificCensusName,
+                                arguments: censusName.name,
+                              );
+                            },
                             title: Text('Ranking: ${censusName.rank}'),
                             leading: Column(
                               mainAxisAlignment: MainAxisAlignment.center,

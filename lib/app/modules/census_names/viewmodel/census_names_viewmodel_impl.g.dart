@@ -25,13 +25,13 @@ mixin _$CensusNamesViewmodelImpl on _CensusNamesViewmodelImplBase, Store {
     });
   }
 
-  late final _$getGeneralPeopleAsyncAction = AsyncAction(
-      '_CensusNamesViewmodelImplBase.getGeneralPeople',
+  late final _$getCensusNamesAsyncAction = AsyncAction(
+      '_CensusNamesViewmodelImplBase.getCensusNames',
       context: context);
 
   @override
-  Future<void> getGeneralPeople() {
-    return _$getGeneralPeopleAsyncAction.run(() => super.getGeneralPeople());
+  Future<void> getCensusNames() {
+    return _$getCensusNamesAsyncAction.run(() => super.getCensusNames());
   }
 
   @override

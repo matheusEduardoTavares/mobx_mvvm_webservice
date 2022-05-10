@@ -2,6 +2,6 @@ import 'package:flutter_test_recrutamento/app/modules/census_names/models/census
 import 'package:mobx/mobx.dart';
 
 abstract class CensusNamesViewmodel {
-  Future<void> getGeneralPeople();
+  Future<void> getCensusNames();
   late ObservableFuture<List<CensusNamesModel>> censusNames;
 }

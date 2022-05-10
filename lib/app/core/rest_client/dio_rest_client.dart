@@ -27,7 +27,7 @@ class DioRestClient implements RestClient {
   late Dio _dio;
 
   final _options = BaseOptions(
-    baseUrl: NetworkAddressUtilities.baseUrl,
+    baseUrl: NetworkAddressUtils.baseUrl,
     contentType: 'application/json',
   );
 

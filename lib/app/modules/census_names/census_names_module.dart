@@ -1,9 +1,11 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_test_recrutamento/app/core/utils/routes_definition_utils.dart';
 import 'package:flutter_test_recrutamento/app/modules/census_names/repository/census_names_repository.dart';
 import 'package:flutter_test_recrutamento/app/modules/census_names/repository/census_names_repository_impl.dart';
 import 'package:flutter_test_recrutamento/app/modules/census_names/view/census_names_view.dart';
 import 'package:flutter_test_recrutamento/app/modules/census_names/viewmodel/census_names_viewmodel.dart';
 import 'package:flutter_test_recrutamento/app/modules/census_names/viewmodel/census_names_viewmodel_impl.dart';
+import 'package:flutter_test_recrutamento/app/modules/specific_census_name/specific_census_name_module.dart';
 
 class CensusNamesModule extends Module {
   @override
@@ -23,6 +25,10 @@ class CensusNamesModule extends Module {
       child: (_, __) => CensusNamesView(
         viewmodel: Modular.get(),
       )
+    ),
+    ModuleRoute(
+      RoutesDefinitionUtils.specificCensusName, 
+      module: SpecificCensusNameModule(),
     ),
   ];
 }
